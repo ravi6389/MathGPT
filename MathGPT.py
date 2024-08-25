@@ -11,8 +11,8 @@ import pytesseract
 import easyocr
 
 
-os.environ['SSL_CERT_FILE'] = 'C:\\Users\\RSPRASAD\\AppData\\Local\\.certifi\\cacert.pem'
-GROQ_API_KEY = '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'
+# os.environ['SSL_CERT_FILE'] = 'C:\\Users\\RSPRASAD\\AppData\\Local\\.certifi\\cacert.pem'
+GROQ_API_KEY = st.secrets('GROQ_API_KEY')
 llm = ChatGroq(temperature=0, groq_api_key=GROQ_API_KEY, model_name="mixtral-8x7b-32768")
 pytesseract.pytesseract.tesseract_cmd = 'C:\\Users\\RSPRASAD\\AppData\\Local\\Programs\\Tesseract-OCR\\tesseract.exe'
 ocr = PaddleOCR(use_angle_cls=True, lang='en')
