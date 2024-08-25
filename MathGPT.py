@@ -1,14 +1,14 @@
 import os
 import streamlit as st
 from PIL import Image
-import pytesseract
+
 from paddleocr import PaddleOCR, draw_ocr
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain_groq import ChatGroq
 import numpy as np
-import pytesseract
-import easyocr
+
+
 
 
 # os.environ['SSL_CERT_FILE'] = 'C:\\Users\\RSPRASAD\\AppData\\Local\\.certifi\\cacert.pem'
