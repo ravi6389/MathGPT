@@ -2,7 +2,7 @@ import os
 import streamlit as st
 from PIL import Image
 
-from paddleocr import PaddleOCR, draw_ocr
+from paddleocr import PaddleOCR
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain_groq import ChatGroq
