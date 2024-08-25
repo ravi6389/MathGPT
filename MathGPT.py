@@ -52,7 +52,7 @@ def solve_math_problem_with_groq(problem_text):
 
 # Streamlit app
 def main():
-    st.title("Math Solver using ChatGroq (for faster Calculation), llama3 (LLM), Gemini 1.5 Flash for reading text from image and LangChain for the chain")
+    st.subheader("Math Solver using ChatGroq (for faster Calculation), llama3 (LLM), Gemini 1.5 Flash (for reading text from image) and LangChain for the chain")
     st.write('Developed by Ravi Shankar Prasad- https://www.linkedin.com/in/ravi-shankar-prasad-371825101/')
 
     # Input method selection
