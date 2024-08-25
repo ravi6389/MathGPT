@@ -1,47 +1,31 @@
 import os
 import streamlit as st
 from PIL import Image
-
-from paddleocr import PaddleOCR
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain_groq import ChatGroq
-import numpy as np
+import google.generativeai as genai
 
 
-
-
-# os.environ['SSL_CERT_FILE'] = 'C:\\Users\\RSPRASAD\\AppData\\Local\\.certifi\\cacert.pem'
 GROQ_API_KEY = st.secrets('GROQ_API_KEY')
-llm = ChatGroq(temperature=0, groq_api_key=GROQ_API_KEY, model_name="mixtral-8x7b-32768")
+llm = ChatGroq(temperature=0, groq_api_key=GROQ_API_KEY, model_name="llama3-groq-70b-8192-tool-use-preview")
+gemini_api_key = os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=gemini_api_key)
 
-ocr = PaddleOCR(use_angle_cls=True, lang='en')
-# Function to extract text from an image using OCR
+
 def extract_text_from_image(image):
     try:
-        # Convert PIL Image to NumPy array
-        image_np = np.array(image)
-        
-        # Perform OCR using PaddleOCR
-        results = ocr.ocr(image_np, cls=True)
-        
-        # Extract text from results
-        extracted_text = ""
-        for line in results:
-            for word_info in line:
-                extracted_text += word_info[1][0] + " "
-        
+        img=Image.open(uploaded_file)
+        model=genai.GenerativeModel("gemini-1.5-flash-latest")
+        prompt = 'Extract text from image'
+        response=model.generate_content([prompt,img])
+        st.markdown(response.text)
+
         return extracted_text.strip() if extracted_text else "No text found in the image."
    
     except Exception as e:
         return f"Error processing image: {e}"
-    # try:
-    #     # Use pytesseract to do OCR on the image
-    #     # text = pytesseract.image_to_string(image)
-    #     text = pytesseract.image_to_string(image, lang='eng', config='--psm 7')
-    #     return text.strip()
-    # except Exception as e:
-    #     return f"Error processing image: {e}"
+
 
 # Function to solve a math problem using Groq API and Mistral LLM
 def solve_math_problem_with_groq(problem_text):
