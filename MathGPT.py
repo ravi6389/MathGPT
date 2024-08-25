@@ -19,7 +19,7 @@ def extract_text_from_image(image, uploaded_file):
         model=genai.GenerativeModel("gemini-1.5-flash-latest")
         prompt = 'Extract text from image'
         response=model.generate_content([prompt,img])
-        st.markdown(response.text)
+        # st.markdown(response.text)
 
         return response.text.strip() if response.text else "No text found in the image."
    
