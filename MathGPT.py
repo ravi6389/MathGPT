@@ -13,7 +13,7 @@ gemini_api_key =st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=gemini_api_key)
 
 
-def extract_text_from_image(image):
+def extract_text_from_image(image, uploaded_file):
     try:
         img=Image.open(uploaded_file)
         model=genai.GenerativeModel("gemini-1.5-flash-latest")
@@ -68,7 +68,7 @@ def main():
             image = Image.open(uploaded_file)
             st.image(image, caption='Uploaded Image', use_column_width=True)
             # Extract text from image
-            problem_text = extract_text_from_image(image)
+            problem_text = extract_text_from_image(image,uploaded_file)
             if problem_text:
                 st.write("Extracted Text:", problem_text)
             else:
