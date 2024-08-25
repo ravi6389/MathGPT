@@ -21,7 +21,7 @@ def extract_text_from_image(image, uploaded_file):
         response=model.generate_content([prompt,img])
         st.markdown(response.text)
 
-        return extracted_text.strip() if extracted_text else "No text found in the image."
+        return response.text.strip() if response.text else "No text found in the image."
    
     except Exception as e:
         return f"Error processing image: {e}"
