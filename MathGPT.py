@@ -9,7 +9,9 @@ import google.generativeai as genai
 
 GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 # llm = ChatGroq(temperature=0, groq_api_key=GROQ_API_KEY, model_name="llama3-groq-70b-8192-tool-use-preview")
-llm = ChatGroq(temperature=0, groq_api_key=GROQ_API_KEY, model_name="llama-3.1-8b-instant")
+# llm = ChatGroq(temperature=0, groq_api_key=GROQ_API_KEY, model_name="llama-3.1-8b-instant")
+llm = ChatGroq(groq_api_key=GROQ_API_KEY, model_name="llama3-groq-70b-8192-tool-use-preview")
+
 gemini_api_key =st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=gemini_api_key)
 
