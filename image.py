@@ -36,6 +36,7 @@ prompt=st.text_input("Enter the text")
 
 if st.button("GET RESPONSE"):
     img=Image.open(uploaded_file)
-    model=genai.GenerativeModel("gemini-1.0-pro-vision-latest")
+    model=genai.GenerativeModel("gemini-1.5-flash")
+    # model=genai.GenerativeModel("gemini-1.0-pro-vision-latest")
     response=model.generate_content([prompt,img])
     st.markdown(response.text)
