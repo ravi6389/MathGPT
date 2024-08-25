@@ -17,7 +17,7 @@ from PIL import Image
 ####### Provide your api key ###################
 #api_key="#####"
 #genai.configure(api_key=api_key)
-gemini_api_key = st.secrets['GEMINI_API_KEY'])
+gemini_api_key = st.secrets['GEMINI_API_KEY']
 genai.configure(api_key=gemini_api_key)
 
 ######## Choose the heading ###############
